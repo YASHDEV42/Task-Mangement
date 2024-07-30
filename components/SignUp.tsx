@@ -7,6 +7,7 @@ import { Label } from "./ui/label";
 import Link from "next/link";
 import Image from "next/image";
 import { googleLogin, register } from "@/action/user";
+
 const initialState = {
   message: null,
 };

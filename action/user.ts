@@ -10,25 +10,25 @@ const googleLogin = async () => {
   await signIn("google");
 };
 
-const login = async (prevState, formData: FormData) => {
+const login = async (formData: FormData) => {
   const email = formData.get("email");
   const password = formData.get("password");
 
-  if (!email || !password) {
-    return { message: "Please fill in all fields" };
+  try {
+    await signIn("credentials", {
+      redirect: false,
+      callbackUrl: "/",
+      email,
+      password,
+    });
+
+    redirect("/");
+  } catch (err) {
+    console.log(err);
   }
-
-  await signIn("credentials", {
-    redirect: false,
-    callbackUrl: "/",
-    email,
-    password,
-  });
-
-  redirect("/");
 };
 
-const register = async (prevState, formData: FormData) => {
+const register = async (prevState: FormData, formData: FormData) => {
   const firstName = formData.get("firstName") as string;
   const lastName = formData.get("lastName") as string;
   const email = formData.get("email") as string;

@@ -18,7 +18,7 @@ const HeroPage = async () => {
        hover:bg-yellow-200 transition duration-300 ease-in-out border-2 border-yellow-300 hover:border-yellow-400 mr-5 tracking-widest"
         >
           {user ? (
-            <Link href="/profile">Profile</Link>
+            <Link href="/dashboard">Dashboard</Link>
           ) : (
             <Link href="/login">Login</Link>
           )}

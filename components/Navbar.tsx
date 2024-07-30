@@ -10,7 +10,7 @@ const Navbar = async () => {
     return (
       <nav className="h-[7vh] mx-auto w-4/5 flex justify-between items-center flex-row fixed top-0 left-[10vw]">
         <h3 className=" text-4xl">
-          <Link href="/profile">
+          <Link href="/dashboard">
             <span className="text-yellow-300">YASH</span>TASK
           </Link>
         </h3>
@@ -22,7 +22,7 @@ const Navbar = async () => {
             <Link href="/about">About</Link>
           </li>
           <li>
-            <Link href="/profile">Profile</Link>
+            <Link href="/dashboard">Dashboard</Link>
           </li>
           <form
             action={async () => {
