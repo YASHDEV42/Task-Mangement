@@ -13,7 +13,7 @@ const initialState = {
 };
 const Submit = () => {
   const { pending } = useFormStatus();
-  const [state, formAction] = useFormState(register, initialState);
+  const [state, formAction] = useFormState(register as any, initialState);
 
   return (
     <main className=" h-screen w-4/5 mx-auto flex items-center justify-center flex-col">

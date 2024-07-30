@@ -10,7 +10,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-const SetTaskStatus = ({ slug, task }) => {
+const SetTaskStatus = ({ slug, task }: { slug: string; task: any }) => {
   const [selectedStatus, setSelectedStatus] = useState(task.status);
 
   const handleValueChange = async (value: string) => {

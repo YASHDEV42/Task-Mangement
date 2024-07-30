@@ -7,7 +7,6 @@ import { Project, Task } from "@/types";
 import Link from "next/link";
 import Delete from "./Delete";
 import SetTaskStatus from "./SetTaskStatus";
-import { set } from "mongoose";
 
 const ProjectDetails: React.FC<{
   project: Project;
@@ -18,9 +17,7 @@ const ProjectDetails: React.FC<{
 }> = ({ project, tasks, completedTasks, inProgressTasks, pendingTasks }) => {
   const { title, description, slug } = project;
   const [showDescription, setShowDescription] = React.useState<boolean>(false);
-  const [displayedTasks, setDisplayedTasks] = React.useState<Task | null>(
-    tasks
-  );
+  const [displayedTasks, setDisplayedTasks] = React.useState<any | null>(tasks);
   console.log(displayedTasks);
 
   return (

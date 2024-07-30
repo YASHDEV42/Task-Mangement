@@ -4,61 +4,65 @@ import connectDB from "./lib/db";
 import { User } from "./models/User";
 import bcyrpt from "bcryptjs";
 import Google from "next-auth/providers/google";
+import { Session } from "next-auth";
+import { JWT } from "next-auth/jwt";
+import type { Provider } from "next-auth/providers";
 
-export const { handlers, signIn, signOut, auth } = NextAuth({
-  providers: [
-    Google({
-      clientId: process.env.GOOGLE_CLIENT_ID,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    }),
-    Credentials({
-      name: "Credentials",
-      credentials: {
-        email: { label: "Email", type: "email" },
-        password: { label: "Password", type: "password" },
-      },
+const providers: Provider[] = [
+  Google({
+    clientId: process.env.GOOGLE_CLIENT_ID,
+    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+  }),
+  Credentials({
+    name: "Credentials",
+    credentials: {
+      email: { label: "Email", type: "email" },
+      password: { label: "Password", type: "password" },
+    },
 
-      authorize: async (credentials) => {
-        const email = credentials.email as string | undefined;
-        const password = credentials.password as string | undefined;
-        if (!email || !password) {
-          throw new Error("Please fill in all fields");
-        }
+    authorize: async (credentials) => {
+      const email = credentials.email as string | undefined;
+      const password = credentials.password as string | undefined;
+      if (!email || !password) {
+        throw new Error("Please fill in all fields");
+      }
 
-        await connectDB();
+      await connectDB();
 
-        const user = await User.findOne({ email }).select("+password");
+      const user = await User.findOne({ email }).select("+password");
 
-        if (!user) {
-          throw new Error("Invalid credentials");
-        }
+      if (!user) {
+        throw new Error("Invalid credentials");
+      }
 
-        if (!user.password) {
-          throw new Error("Invalid credentials");
-        }
+      if (!user.password) {
+        throw new Error("Invalid credentials");
+      }
 
-        const passwordsMatch = await bcyrpt.compare(password, user.password);
+      const passwordsMatch = await bcyrpt.compare(password, user.password);
 
-        if (!passwordsMatch) {
-          throw new Error("Invalid credentials");
-        }
-        const userData = {
-          name: user.firstName + " " + user.lastName,
-          email: user.email,
-          role: user.role,
-          id: user._id,
-        };
+      if (!passwordsMatch) {
+        throw new Error("Invalid credentials");
+      }
+      const userData = {
+        name: user.firstName + " " + user.lastName,
+        email: user.email,
+        role: user.role,
+        id: user._id,
+      };
 
-        return userData;
-      },
-    }),
-  ],
+      return userData;
+    },
+  }),
+];
+export const authConfig: any = {
+  providers,
   pages: {
     signIn: "/login",
   },
 
   callbacks: {
-    async session({ session, token }) {
+    async session({ session, token }: { session: Session; token: any }) {
       if (token?.sub && token?.role) {
         session.user.id = token.sub;
         session.user.role = token.role;
@@ -67,14 +71,14 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       return session;
     },
 
-    async jwt({ token, user }) {
+    async jwt({ token, user }: { token: JWT; user: any }) {
       if (user) {
         token.role = user.role;
       }
       return token;
     },
 
-    signIn: async ({ user, account }) => {
+    signIn: async ({ user, account }: { user: any; account: any }) => {
       if (account?.provider === "google") {
         try {
           const { email, name, given_name, family_name, image, id } = user;
@@ -107,4 +111,5 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       }
     },
   },
-});
+};
+export const { handlers, auth, signIn, signOut } = NextAuth(authConfig);

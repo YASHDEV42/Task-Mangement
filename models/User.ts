@@ -1,3 +1,4 @@
+"use server";
 import mongoose from "mongoose";
 
 const userScema = new mongoose.Schema({
