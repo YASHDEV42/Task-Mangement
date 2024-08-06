@@ -25,7 +25,7 @@ const Projects: React.FC<{ projects: ProjectType[] }> = ({ projects }) => {
           <FaLongArrowAltLeft size={30} className="inline" />
           drag
         </span>
-        <Carousel className=" cursor-move">
+        <Carousel className=" cursor-move z-0">
           <CarouselContent>
             {projects.map((project) => (
               <CarouselItem

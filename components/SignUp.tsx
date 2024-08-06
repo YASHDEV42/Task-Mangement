@@ -19,15 +19,13 @@ const Submit = () => {
     <main className=" h-screen w-4/5 mx-auto flex items-center justify-center flex-col">
       <div className="w-full mx-auto flex items-center justify-center flex-col">
         <div className=" h-1/2 w-full flex items-between justify-center">
-          <h1 className=" text-5xl font-bold tracking-wide border-b-2 border-yellow-300">
-            Register Page
-          </h1>
+          <h1 className="border-b-2 border-yellow-300">Register Page</h1>
         </div>
         <form
           action={formAction}
-          className=" h-full w-full flex items-center justify-center flex-col gap-2 text-yellow-300 mt-16 mb-5"
+          className=" h-full w-full flex items-center justify-center flex-col gap-2 text-yellow-300 lg:mt-16 md:mt-10 mt-5 mb-5"
         >
-          <div className="flex items-center justify-between flex-row gap-4 w-1/2">
+          <div className="flex items-center justify-between flex-col md:flex-row gap-4 w-1/2 ">
             <div className="w-full">
               <Label htmlFor="firstName" className=" text-lg  text-left w-1/4">
                 First Name :
@@ -36,7 +34,7 @@ const Submit = () => {
                 id="firstName"
                 placeholder="Enter your username"
                 name="firstName"
-                className=" mb-2 w-full text-black font-semibold text-lg"
+                className=" mb-2 w-full text-black font-semibold md:text-lg"
               />
             </div>
             <div className=" w-full">
@@ -47,7 +45,7 @@ const Submit = () => {
                 id="lastName"
                 placeholder="Enter your username"
                 name="lastName"
-                className=" mb-2 w-full text-black font-semibold text-lg"
+                className=" mb-2 w-full text-black font-semibold md:text-lg"
               />
             </div>
           </div>
@@ -59,9 +57,9 @@ const Submit = () => {
             type="email"
             name="email"
             placeholder="Enter your email"
-            className=" mb-2  w-1/2 text-black font-semibold text-lg"
+            className=" mb-2  w-1/2 text-black font-semibold md:text-lg"
           />
-          <div className="flex items-center justify-between flex-row gap-4 w-1/2">
+          <div className="flex items-center justify-between flex-col md:flex-row gap-4 w-1/2">
             <div className="w-full">
               <Label htmlFor="password" className=" text-lg w-full">
                 Password :
@@ -71,7 +69,7 @@ const Submit = () => {
                 type="password"
                 name="password"
                 placeholder="Enter your password"
-                className=" mb-2  w-full text-black font-semibold text-lg"
+                className=" mb-2  w-full text-black font-semibold md:text-lg"
               />
             </div>
             <div className="w-full">
@@ -83,7 +81,7 @@ const Submit = () => {
                 type="password"
                 name="confirmPassword"
                 placeholder="Enter your password"
-                className=" mb-2  w-full text-black font-semibold text-lg"
+                className=" mb-2  w-full text-black font-semibold md:text-lg"
               />
             </div>
           </div>
@@ -95,20 +93,11 @@ const Submit = () => {
           </span>
           <p className=" text-red-600 font-bold text-lg">{state?.message}</p>
           {pending ? (
-            <Button
-              type="submit"
-              disabled
-              className="text-lg p-6 bg-slate-950 text-yellow-300 font-bold border-2 border-yellow-300  tracking-widest
-              hover:bg-slate-900 hover:border-yellow-400 hover:text-yellow-400"
-            >
+            <Button type="submit" disabled className="secondary-btn mt-5">
               Registering...
             </Button>
           ) : (
-            <Button
-              type="submit"
-              className="text-lg p-6 bg-slate-950 text-yellow-300 font-bold border-2 border-yellow-300  tracking-widest
-                hover:bg-slate-900 hover:border-yellow-400 hover:text-yellow-400"
-            >
+            <Button type="submit" className="secondary-btn mt-5">
               Register
             </Button>
           )}

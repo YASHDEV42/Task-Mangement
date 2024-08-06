@@ -67,3 +67,67 @@
     @apply bg-background text-foreground;
   }
 }
+h1 {
+  @apply text-4xl;
+  @apply md:text-5xl;
+  @apply lg:text-6xl;
+  @apply font-bold;
+  @apply text-center;
+}
+p {
+  @apply text-xl;
+  @apply md:text-2xl;
+  @apply lg:text-3xl;
+  @apply text-center;
+}
+.primary-btn {
+  @apply bg-yellow-300;
+  @apply text-slate-950;
+  @apply text-lg;
+  @apply font-bold;
+  @apply rounded-md;
+  @apply w-28;
+  @apply h-10;
+  @apply md:w-32;
+  @apply md:h-12;
+  @apply lg:w-36;
+  @apply lg:h-12;
+  @apply shadow-lg;
+  @apply border-2;
+  @apply border-yellow-300;
+  @apply hover:bg-slate-900;
+  @apply hover:text-yellow-400;
+  @apply border-yellow-400;
+  @apply hover:scale-110;
+  @apply hover:shadow-xl;
+  @apply transition;
+  @apply duration-300;
+  @apply tracking-widest;
+}
+.secondary-btn {
+  @apply bg-slate-950;
+  @apply text-yellow-300;
+  @apply text-lg;
+  @apply font-bold;
+  @apply rounded-md;
+  @apply w-28;
+  @apply h-10;
+  @apply md:w-32;
+  @apply md:h-12;
+  @apply lg:w-36;
+  @apply lg:h-12;
+  @apply shadow-lg;
+  @apply border-2;
+  @apply border-yellow-300;
+  @apply hover:bg-slate-900;
+  @apply text-yellow-400;
+  @apply hover:border-yellow-400;
+  @apply hover:scale-110;
+  @apply hover:shadow-xl;
+  @apply transition;
+  @apply duration-300;
+  @apply tracking-widest;
+}
+/*
+px-10 py-7 text-xl bg-slate-950 text-yellow-300 font-bold hover:scale-110
+       hover:bg-slate-900 transition duration-300 ease-in-out border-2 border-yellow-300 hover:border-yellow-400 hover:text-yellow-400 tracking-widest */

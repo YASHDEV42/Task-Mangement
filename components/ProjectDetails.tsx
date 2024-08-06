@@ -22,11 +22,11 @@ const ProjectDetails: React.FC<{
 
   return (
     <main className="w-full mt-32">
-      <h2 className="text-7xl mb-8 border-b-4 border-yellow-300 inline-block">
+      <h1 className=" mb-8 border-b-4 border-yellow-300 inline-block">
         {title}
-      </h2>
+      </h1>
       <br />
-      <p className="pb-2">
+      <p className="pb-2 text-left">
         {showDescription ? (
           description
         ) : (
@@ -52,7 +52,7 @@ const ProjectDetails: React.FC<{
           ) => (
             <li
               key={task._id.toString()}
-              className="text-xl flex justify-between items-center flex-row w-full bg-slate-900 p-3 mb-4 rounded-md "
+              className="text-xl flex justify-between items-center lg:flex-row md:flex-row flex-col gap-3 w-full bg-slate-900 p-3 mb-4 rounded-md "
             >
               <span>{task.title}</span>
               <div className="flex justify-center items-center flex-row gap-5">
