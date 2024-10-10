@@ -22,11 +22,7 @@ const SetTaskStatus = ({ slug, task }: { slug: string; task: any }) => {
     }
   };
   return (
-    <form
-      action={async (formData) => {
-        // This might not be needed anymore with handleValueChange handling the update
-      }}
-    >
+    <form>
       <input type="hidden" name="taskId" value={task._id} />
       <Select onValueChange={handleValueChange} value={selectedStatus}>
         <SelectTrigger className="w-[180px] bg-slate-950 outline-0 border-0 focus:ring-offset-0 focus:border-0">
